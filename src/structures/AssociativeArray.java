@@ -7,7 +7,7 @@ import static java.lang.reflect.Array.newInstance;
  * and values of type V. Associative Arrays store key/value pairs
  * and permit you to look up values by key.
  *
- * @author Your Name Here
+ * @author Shibam Mukhopadhyay
  * @author Samuel A. Rebelsky
  */
 public class AssociativeArray<K, V> {
@@ -29,6 +29,10 @@ public class AssociativeArray<K, V> {
    */
   int size;
 
+  /**
+   * The capacity of the associative array (space allocated for the array)
+   */
+  int capacity = DEFAULT_CAPACITY;
   /**
    * The array of key/value pairs.
    */
@@ -57,14 +61,31 @@ public class AssociativeArray<K, V> {
    * Create a copy of this AssociativeArray.
    */
   public AssociativeArray<K, V> clone() {
-    return null; // STUB
+    AssociativeArray<K, V> copyArray = new AssociativeArray<K, V>();
+    copyArray.size = 0;
+    for (int i = 0; i < this.size; i++){
+      if(copyArray.size >= copyArray.capacity){
+        copyArray.expand();
+        copyArray.capacity = 2 * copyArray.capacity;
+      }//if
+      copyArray.pairs[i] = new KVPair<K, V>(this.pairs[i].key, this.pairs[i].value);
+      copyArray.size++;
+    }//for
+    return copyArray;
   } // clone()
 
   /**
    * Convert the array to a string.
    */
   public String toString() {
-    return "{}"; // STUB
+    if (this.size() == 0){
+      return "{}";
+    }//if empty
+    String arrayTotal = this.pairs[0].key + ": " + this.pairs[0].value; //putting index 0 here so that for loop can add "," to string
+    for (int i = 1; i < size; i++) {
+      arrayTotal = arrayTotal + ", " + this.pairs[i].key + ": " + this.pairs[i].value;
+    }//for
+    return "{ " + arrayTotal + " }";  
   } // toString()
 
   // +----------------+----------------------------------------------
