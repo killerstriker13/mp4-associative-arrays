@@ -97,7 +97,24 @@ public class AssociativeArray<K, V> {
    * get(key) will return value.
    */
   public void set(K key, V value) throws NullKeyException {
-    // STUB
+    if (key == null){
+      throw new NullKeyException();
+    } //if key is null
+    if (this.size >= this.capacity){
+      this.expand();
+      this.capacity = 2 * this.capacity;
+    } //if we need bigger array
+    try {
+      int i = find(key);
+      this.pairs[i].value = value;
+    } //try if key exists, we set previous value to given value 
+    catch (KeyNotFoundException e){
+      this.pairs[size] = new KVPair<K, V>(key, value);
+      size++;
+    } //create new KVPair and add that to the end of the array 
+    catch (NullKeyException e) {
+      throw new NullKeyException();
+    } // in case there is a NullKey in the array, my method of implementation should have no null keys
   } // set(K,V)
 
   /**
@@ -150,8 +167,16 @@ public class AssociativeArray<K, V> {
    * Find the index of the first entry in `pairs` that contains key.
    * If no such entry is found, throws an exception.
    */
-  int find(K key) throws KeyNotFoundException {
-    throw new KeyNotFoundException();   // STUB
+  int find(K key) throws KeyNotFoundException, NullKeyException {
+    for (int i = 0; i < this.size(); i++){
+      if (this.pairs[i].key == null) {
+        throw new NullKeyException(); 
+      }//if null key 
+       if (this.pairs[i].key.equals(key)) {
+         return i; 
+       } //if key in array equals key
+     } //for
+     throw new KeyNotFoundException();
   } // find(K)
 
 } // class AssociativeArray
