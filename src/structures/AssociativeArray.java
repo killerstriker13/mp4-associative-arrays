@@ -149,7 +149,15 @@ public class AssociativeArray<K, V> {
    * in the associative array, does nothing.
    */
   public void remove(K key) {
-    // STUB
+    try {
+      int i = find(key); 
+      this.pairs[i] = this.pairs[size-1];
+      this.pairs[size-1] = new KVPair<>(); 
+      size--;
+    } // try
+    catch(KeyNotFoundException e) {
+      //do nothing
+    } // catch
   } // remove(K)
 
   /**
