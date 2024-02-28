@@ -122,7 +122,8 @@ public class AssociativeArray<K, V> {
    *                              appear in the associative array.
    */
   public V get(K key) throws KeyNotFoundException {
-    return null; // STUB
+    int i = find(key);
+    return this.pairs[i].value;
   } // get(K)
 
   /**
@@ -130,7 +131,16 @@ public class AssociativeArray<K, V> {
    * return false for the null key.
    */
   public boolean hasKey(K key) {
-    return false; // STUB
+    if (key == null){
+      return false;
+    }
+    try{    
+      find(key);
+      return true;
+    }
+    catch(KeyNotFoundException e){
+      return false;
+    }
   } // hasKey(K)
 
   /**
