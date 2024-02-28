@@ -29,6 +29,7 @@ public class AssociativeArrayExperiments {
     divider(pen);
     experimentBigIntToBigInt(pen);
     divider(pen);
+    experimentBigIntToStrings(pen);
   } // main(String[])
 
   // +-------------+-------------------------------------------------
@@ -98,6 +99,32 @@ public class AssociativeArrayExperiments {
       try { b2b.get(BigInteger.valueOf(i)); } catch (Exception e) { }
     } // for
   } // experimentBigIntToBigInt
+  /**
+   * My own experiment/implementation of an AssociativeArray with BigIntegers as 
+   * keys and Strings as values (Based on my graph theory class)
+   * @param pen
+   * @throws Exception
+   */
+  public static void experimentBigIntToStrings(PrintWriter pen) throws Exception {
+    AssociativeArray<BigInteger,String> b2s = 
+      new ReportingAssociativeArray<BigInteger,String>("b2s", pen);
+    b2s.size();
+    b2s.set(BigInteger.valueOf(1), "Vertex A");
+    b2s.set(BigInteger.valueOf(2), "Vertex B");
+    b2s.size();
+    b2s.hasKey(BigInteger.valueOf(1));
+    b2s.hasKey(BigInteger.valueOf(2));
+    try { b2s.get(BigInteger.valueOf(1)); } catch (Exception e) { }
+    try { b2s.get(BigInteger.valueOf(2)); } catch (Exception e) { }
+    b2s.remove(BigInteger.valueOf(1));
+    b2s.size();
+    try { b2s.get(BigInteger.valueOf(1)); } catch (Exception e) { }
+    try { b2s.get(BigInteger.valueOf(2)); } catch (Exception e) { }
+    b2s.remove(BigInteger.valueOf(4));
+    b2s.size();
+    try { b2s.get(BigInteger.valueOf(1)); } catch (Exception e) { }
+    try { b2s.get(BigInteger.valueOf(2)); } catch (Exception e) { }
+  } // experimentBigIntToStrings
 
   // +---------+-----------------------------------------------------
   // | Helpers |
