@@ -25,7 +25,7 @@ public class AssociativeArrayExperiments {
     PrintWriter pen = new PrintWriter(System.out, true);
 
     divider(pen);
-    expreimentStringsToStrings(pen);
+    experimentStringsToStrings(pen);
     divider(pen);
     experimentBigIntToBigInt(pen);
     divider(pen);
@@ -39,7 +39,7 @@ public class AssociativeArrayExperiments {
    * Our first experiment: Associative arrays with strings as both keys 
    * and values.
    */
-  public static void expreimentStringsToStrings(PrintWriter pen) throws Exception {
+  public static void experimentStringsToStrings(PrintWriter pen) throws Exception {
     AssociativeArray<String,String> s2s = 
       new ReportingAssociativeArray<String,String>("s2s", pen);
     s2s.size();
