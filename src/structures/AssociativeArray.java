@@ -112,9 +112,6 @@ public class AssociativeArray<K, V> {
       this.pairs[size] = new KVPair<K, V>(key, value);
       size++;
     } //create new KVPair and add that to the end of the array 
-    catch (NullKeyException e) {
-      throw new NullKeyException();
-    } // in case there is a NullKey in the array, my method of implementation should have no null keys
   } // set(K,V)
 
   /**
@@ -167,10 +164,10 @@ public class AssociativeArray<K, V> {
    * Find the index of the first entry in `pairs` that contains key.
    * If no such entry is found, throws an exception.
    */
-  int find(K key) throws KeyNotFoundException, NullKeyException {
+  int find(K key) throws KeyNotFoundException {
     for (int i = 0; i < this.size(); i++){
       if (this.pairs[i].key == null) {
-        throw new NullKeyException(); 
+        throw new KeyNotFoundException(); 
       }//if null key 
        if (this.pairs[i].key.equals(key)) {
          return i; 
