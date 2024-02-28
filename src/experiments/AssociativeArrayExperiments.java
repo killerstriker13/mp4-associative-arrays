@@ -9,7 +9,7 @@ import structures.KeyNotFoundException;
 /**
  * Experiments with our AssociativeArray class.
  *
- * @author Your Name Here
+ * @author Shibam Mukhopadhyay
  * @author Samuel A. Rebelsky
  */
 public class AssociativeArrayExperiments {
@@ -58,7 +58,7 @@ public class AssociativeArrayExperiments {
     s2s.size();
     try { s2s.get("a"); } catch (Exception e) { }
     try { s2s.get("A"); } catch (Exception e) { }
-  } // expreimentStringsToStrings
+  } // experimentStringsToStrings
 
   /**
    * Our second experiment: Associative arrays with big integers as
